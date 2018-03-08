@@ -39,9 +39,13 @@ public class RobotController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+	    // 水平方向キーの入力に応じてステアリング角度を変化
 		float steering = MaxSteeringAngle * Input.GetAxis ("Horizontal");
+
+		// 垂直方向キーの入力に応じてモータートルクを変化
 		float motor = MaxMotorTorque * Input.GetAxis ("Vertical");
 
+        // ステアリング角とモータトルクの値を更新
 		foreach (var axleInfo in axleInfos) {
 			if (axleInfo.steering) {
 				axleInfo.leftWheel.steerAngle = steering;
